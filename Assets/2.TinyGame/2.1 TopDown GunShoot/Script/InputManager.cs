@@ -14,7 +14,7 @@ namespace TopDownGunShoot
 
         public event EventHandler OnInteractAction; // 交互
         public event EventHandler OnAttackAction; // 攻击
-        public event EventHandler<Vector2> OnMoveAction; // 移动
+        public event EventHandler<Vector2> OnMoveAction; // 移动--主动调用并传递vector2
         public event EventHandler<bool> OnSwtichWeaponAction; // 切换武器
 
         private void Awake()
@@ -27,13 +27,18 @@ namespace TopDownGunShoot
             InitializeInputSystem();
         }
 
+        private void Update()
+        {
+            HandleMoveInput();
+        }
+
         private void InitializeInputSystem()
         {
             inputs = new InputSystem();
 
             inputs.MainCharater.Interact.performed += Interact;
             inputs.MainCharater.Attack.performed += Attack;
-            inputs.MainCharater.Move.performed += Move;
+            //inputs.MainCharater.Move.performed += Move;
             inputs.MainCharater.SwitchWeapon.performed += SwitchWeapon;
 
             inputs.Enable();
@@ -44,16 +49,16 @@ namespace TopDownGunShoot
             inputs.Disable();
         }
 
-        private void Move(InputAction.CallbackContext context)
+        private void HandleMoveInput() // move无法通过performed来实现被动监听，需要update主动监听
         {
-            Vector2 value = context.ReadValue<Vector2>();
+            Vector2 value = inputs.MainCharater.Move.ReadValue<Vector2>();
 
-            OnMoveAction?.Invoke(this, value);
+            OnMoveAction?.Invoke(this, value.normalized);
         }
 
         private void Attack(InputAction.CallbackContext context)
         {
-
+            Debug.Log("Attack");
         }
 
         private void SwitchWeapon(InputAction.CallbackContext context)
@@ -64,7 +69,7 @@ namespace TopDownGunShoot
 
         private void Interact(InputAction.CallbackContext context)
         {
-
+            Debug.Log("Interact");
         }
     }
 }

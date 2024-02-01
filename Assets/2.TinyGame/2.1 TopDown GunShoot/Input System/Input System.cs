@@ -53,7 +53,7 @@ namespace TopDownGunShoot
                     ""id"": ""9a294ad9-e9be-43a3-9ee3-da10fe1186b5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
