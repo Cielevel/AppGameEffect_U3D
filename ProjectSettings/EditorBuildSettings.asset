@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/2.TinyGame/2.1 TopDown GunShoot/Scene/SC Function Test.unity
+    guid: 3c37086d56c57824ba1428b5e996852a
   m_configObjects: {}

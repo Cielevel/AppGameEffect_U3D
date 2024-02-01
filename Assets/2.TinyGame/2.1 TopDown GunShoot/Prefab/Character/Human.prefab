@@ -330,6 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999657122465765340}
   - component: {fileID: 8804098333148002691}
+  - component: {fileID: 3827145347569836354}
   - component: {fileID: 7842122715878636077}
   m_Layer: 0
   m_Name: Human
@@ -367,12 +368,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  animeManager: {fileID: 4311841921421182593}
   config: {fileID: 11400000, guid: 12ec353a0f901054bbab20907b19b70d, type: 2}
   isUseConfig: 1
   moveSpeed: 2
   rotateSpeed: 10
   jumpHeight: 0
+--- !u!114 &3827145347569836354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999657122465765343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40ea1022e0ed8f4384da2eb766146a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animeManager: {fileID: 0}
 --- !u!143 &7842122715878636077
 CharacterController:
   m_ObjectHideFlags: 0

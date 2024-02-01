@@ -6,18 +6,18 @@ using Sirenix.OdinInspector;
 
 namespace TopDownGunShoot
 {
-    public class FSMManager : MonoBehaviour // Ò»¸öFSM¶ÔÓ¦Ò»¸ö½ÇÉ«£¬¹ÒÔØÔÚ½ÇÉ«µÄ¸¸½Úµã£¬½«±»¶à¸öManger³ÖÓĞ²¢µ÷ÓÃ
+    public class FSMManager : MonoBehaviour // ä¸€ä¸ªFSMå¯¹åº”ä¸€ä¸ªè§’è‰²ï¼ŒæŒ‚è½½åœ¨è§’è‰²çš„çˆ¶èŠ‚ç‚¹ï¼Œå°†è¢«å¤šä¸ªMangeræŒæœ‰å¹¶è°ƒç”¨
     {
         [SerializeField, FoldoutGroup("Basic Component")] private AnimatorManager animeManager;
 
         private Dictionary<CharacterStateType, BaseState> allStates;
-        //private Dictionary<CharacterStateType, float> attackDurations; // ¹¥»÷ĞèÒª¶à¾Ã½áÊø£¬ÓÃÓÚ¹¥»÷Ê±ÆÁ±ÎÆäËûµÄ¶¯×÷
+        //private Dictionary<CharacterStateType, float> attackDurations; // æ”»å‡»éœ€è¦å¤šä¹…ç»“æŸï¼Œç”¨äºæ”»å‡»æ—¶å±è”½å…¶ä»–çš„åŠ¨ä½œ
 
         private BaseState currentState;
         private CharacterStateType currStateType = CharacterStateType.none;
-        private StatesClassification statesClassification = StatesClassification.none; // ĞèÒª½»¸¶¸øsub state´¦Àí£¿fsmÄÚ²¿ÅĞ¶Ï£¿
+        private StatesClassification statesClassification = StatesClassification.none; // éœ€è¦äº¤ä»˜ç»™sub stateå¤„ç†ï¼Ÿfsmå†…éƒ¨åˆ¤æ–­ï¼Ÿ
 
-        private void Awake() // ³õÊ¼»¯
+        private void Awake() // åˆå§‹åŒ–
         {
             InitialInAwake();
         }
@@ -37,10 +37,10 @@ namespace TopDownGunShoot
             allStates = new Dictionary<CharacterStateType, BaseState>();
 
             if (!animeManager)
-                animeManager = GetComponent<AnimatorManager>();
+                animeManager = GetComponentInChildren<AnimatorManager>();
         }
 
-        private float GetAnimationDurationByType(CharacterStateType stateType) // ¸ù¾İÃû³Æ»ñÈ¡¶¯»­²¥·ÅÊ±³¤£¨ÓÃÓÚ ²¥·Å¹¥»÷¶¯»­ÆÁ±ÎÆäËû¶¯»­£©
+        private float GetAnimationDurationByType(CharacterStateType stateType) // æ ¹æ®åç§°è·å–åŠ¨ç”»æ’­æ”¾æ—¶é•¿ï¼ˆç”¨äº æ’­æ”¾æ”»å‡»åŠ¨ç”»å±è”½å…¶ä»–åŠ¨ç”»ï¼‰
         {
             var runtimeAnimator = animeManager.animator.runtimeAnimatorController;
 
@@ -56,15 +56,15 @@ namespace TopDownGunShoot
         }
 
         /// <summary>
-        /// Ìí¼Ó×´Ì¬
+        /// æ·»åŠ çŠ¶æ€
         /// </summary>
         /// <param name="stateType"></param>
         /// <param name="state"></param>
-        public void AddState(CharacterStateType stateType, BaseState state, StatesClassification classification) // FSMManger³ÖÓĞÆäËûManger²»ÓµÓĞµÄĞÅÏ¢£¨Èç£ºanimator£©
+        public void AddState(CharacterStateType stateType, BaseState state, StatesClassification classification) // FSMMangeræŒæœ‰å…¶ä»–Mangerä¸æ‹¥æœ‰çš„ä¿¡æ¯ï¼ˆå¦‚ï¼šanimatorï¼‰
         {
             if (!allStates.ContainsKey(stateType))
             {
-                switch(classification) // °´Àà½øĞĞ²»Í¬µÄ³õÊ¼»¯
+                switch (classification) // æŒ‰ç±»è¿›è¡Œä¸åŒçš„åˆå§‹åŒ–
                 {
                     case StatesClassification.move:
                         state.Initial(animeManager, stateType);
@@ -88,7 +88,7 @@ namespace TopDownGunShoot
         }
 
         /// <summary>
-        /// ÉèÖÃxĞÂ×´Ì¬
+        /// è®¾ç½®xæ–°çŠ¶æ€
         /// </summary>
         /// <param name="stateType"></param>
         public void SetState(CharacterStateType stateType)

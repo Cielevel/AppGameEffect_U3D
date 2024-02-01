@@ -29,7 +29,7 @@ namespace TopDownGunShoot
         {
             fsmManager = GetComponent<FSMManager>();
 
-            fsmManager.AddState(CharacterStateType.attack_kick_right, new AttackKickState(), StatesClassification.attack); // д╛хоср╫елъ
+            fsmManager.AddState(CharacterStateType.attack_kick_right, new AttackKickState(), StatesClassification.attack); // 
         }
 
         private void AttackAction(object sender, EventArgs eventArgs)

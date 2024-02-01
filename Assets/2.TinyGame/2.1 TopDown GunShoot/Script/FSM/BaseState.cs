@@ -7,7 +7,7 @@ namespace TopDownGunShoot
     public abstract class BaseState
     {
         protected AnimatorManager animeManager;
-        protected CharacterStateType stateType; // 每个状态独有的stateType
+        protected CharacterStateType stateType; // 姣忎釜鐘舵�佺嫭鏈夌殑stateType
         protected float duration = 0;
         protected float durationTimer = 0;
 

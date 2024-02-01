@@ -6,7 +6,7 @@ using UnityEngine;
 public class BodyBreakDown : MonoBehaviour
 {
     [SerializeField] private Rigidbody[] rbs_bodies;
-    private Collider[] cols_bodies; // ����������Collider����ʼ���ķ����ɱ���д
+    private Collider[] cols_bodies; // 可能是其他Collider，初始化的方法可被重写
 
     [SerializeField] private Transform breakPoint;
 
@@ -29,7 +29,7 @@ public class BodyBreakDown : MonoBehaviour
         }
     }
 
-    // �������鿪-->�ر�animator-->����ÿ����λ��rb-->��breakpointΪÿ��rbʩ����--ͬʱ����һЩ�����Լ��ڵ�������һЩ�ۼ�
+    // 身体破碎开-->关闭animator-->开启每个部位的rb-->从breakpoint为每个rb施加力--同时播放一些粒子以及在地上留下一些痕迹
     [Button]
     private void BreakDown()
     {

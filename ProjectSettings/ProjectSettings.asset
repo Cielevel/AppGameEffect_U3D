@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: com.Unity-Technologies.com.unity.template.urp-blank
   productName: AppGameEffect_U3D
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}

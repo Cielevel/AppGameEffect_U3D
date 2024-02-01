@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TopDownGunShoot
 {
     [RequireComponent(typeof(Animator))]
-    public class AnimatorManager : MonoBehaviour // ·â×°animatorµ½Ò»¸ömanager£¬ÒÔ±ãÓÚ¸ü¶àµÄ²Ù×÷
+    public class AnimatorManager : MonoBehaviour // å°è£…animatoråˆ°ä¸€ä¸ªmanagerï¼Œä»¥ä¾¿äºæ›´å¤šçš„æ“ä½œ
     {
         public Animator animator { get; private set; }
 

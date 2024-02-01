@@ -51,7 +51,7 @@ namespace TopDownGunShoot
             HandleFSM();
         }
 
-        void IUseInputManager.InitialInputControl() // ÔÚawkeºó£¨awakeÄÚ»á³õÊ¼»¯InputManager.InstanceÒÔ¼°InputSystem£©
+        void IUseInputManager.InitialInputControl() // åœ¨awkeåï¼ˆawakeå†…ä¼šåˆå§‹åŒ–InputManager.Instanceä»¥åŠInputSystemï¼‰
         {
             InputManager.Instance.OnMoveAction += MoveAction;
         }
@@ -64,7 +64,7 @@ namespace TopDownGunShoot
             fsmManager.AddState(CharacterStateType.walk, new SprintState(), StatesClassification.attack);
         }
 
-        // ÒÆ¶¯µÄÊäÈë¿ØÖÆ--ĞèÊÊÅä¶àÆ½Ì¨
+        // ç§»åŠ¨çš„è¾“å…¥æ§åˆ¶--éœ€é€‚é…å¤šå¹³å°
         private void MoveAction(object sender, Vector2 value) // value already normalized
         {
             // v2-->v3 --> y==z
@@ -73,16 +73,16 @@ namespace TopDownGunShoot
 
         private void HandleMovement()
         {
-            controller.SimpleMove(moveVector * moveSpeed); // ÒÆ¶¯
+            controller.SimpleMove(moveVector * moveSpeed); // ç§»åŠ¨
 
-            if (moveVector != Vector3.zero) // ÒÆ¶¯Ê±×ªÏò£¬·ÇÒÆ¶¯Ê±±£³Ö·½Ïò
+            if (moveVector != Vector3.zero) // ç§»åŠ¨æ—¶è½¬å‘ï¼Œéç§»åŠ¨æ—¶ä¿æŒæ–¹å‘
             {
                 transform.forward = Vector3.Slerp(transform.forward, moveVector, Time.deltaTime * rotateSpeed);
 
             }
         }
 
-        private void HandleFSM() // test --> FSMµÄÊ¹ÓÃ»¹ĞèÒª¸ü½âñî
+        private void HandleFSM() // test --> FSMçš„ä½¿ç”¨è¿˜éœ€è¦æ›´è§£è€¦
         {
             fsmManager.SetState(moveVector != Vector3.zero ? CharacterStateType.walk : CharacterStateType.idle);
         }
