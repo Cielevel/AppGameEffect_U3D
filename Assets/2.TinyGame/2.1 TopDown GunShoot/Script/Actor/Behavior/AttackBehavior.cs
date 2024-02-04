@@ -6,9 +6,12 @@ using UnityEngine;
 namespace TopDownGunShoot
 {
     [RequireComponent(typeof(FSMManager))]
-    public class AttackBehavior : BaseBehavior, IUseFSMManager
+    public class AttackBehavior : BaseBehavior
     {
-        private FSMManager fsmManager;
+        public AttackBehavior(Transform transform, FSMManager fsmManager) : base(transform, fsmManager)
+        {
+
+        }
 
         private void Awake()
         {
@@ -33,20 +36,18 @@ namespace TopDownGunShoot
         protected override void OnBehaviorAdded()
         {
 #if UNITY_EDITOR
-            if (GetComponent<FSMManager>() == null)
-                gameObject.AddComponent<FSMManager>();
+            // if (GetComponent<FSMManager>() == null)
+            //     gameObject.AddComponent<FSMManager>();
 
-            if (GetComponent<CharacterController>() == null)
-                gameObject.AddComponent<CharacterController>();
+            // if (GetComponent<CharacterController>() == null)
+            //     gameObject.AddComponent<CharacterController>();
 #endif
         }
         #endregion
 
         #region IUseFSMManager
-        void IUseFSMManager.InitialFSMManager()
+        public override void InitialFSMManager()
         {
-            fsmManager = GetComponent<FSMManager>();
-
             fsmManager.AddState(CharacterStateType.attack_kick_right, new AttackKickState(), StatesClassification.attack); // 
         }
         #endregion

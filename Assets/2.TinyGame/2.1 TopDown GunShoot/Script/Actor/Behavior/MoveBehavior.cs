@@ -8,7 +8,7 @@ namespace TopDownGunShoot
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(FSMManager))]
-    public class MoveBehavior : BaseBehavior, VectorUtility, IUseFSMManager
+    public class MoveBehavior : BaseBehavior, VectorUtility
     {
         [SerializeField] private CharacterController controller;
 
@@ -21,7 +21,10 @@ namespace TopDownGunShoot
 
         private Vector3 moveVector = Vector3.zero;
 
-        private FSMManager fsmManager;
+        public MoveBehavior(Transform transform, FSMManager fsmManger) : base(transform, fsmManger)
+        {
+
+        }
 
         private void Awake()
         {
@@ -30,8 +33,8 @@ namespace TopDownGunShoot
 
         private void Start()
         {
-            if (controller == null)
-                controller = GetComponent<CharacterController>();
+            // if (controller == null)
+            //     controller = GetComponent<CharacterController>();
 
             if (isUseConfig && config)
             {
@@ -60,19 +63,19 @@ namespace TopDownGunShoot
         protected override void OnBehaviorAdded()
         {
 #if UNITY_EDITOR
-            if (GetComponent<FSMManager>() == null)
-                gameObject.AddComponent<FSMManager>();
+            // if (GetComponent<FSMManager>() == null)
+            //     gameObject.AddComponent<FSMManager>();
 
-            if (GetComponent<CharacterController>() == null)
-                gameObject.AddComponent<CharacterController>();
+            // if (GetComponent<CharacterController>() == null)
+            //     gameObject.AddComponent<CharacterController>();
 #endif
         }
         #endregion
 
         #region IUseFSMManaer
-        void IUseFSMManager.InitialFSMManager()
+        public override void InitialFSMManager()
         {
-            fsmManager = GetComponent<FSMManager>();
+            // fsmManager = GetComponent<FSMManager>();
             fsmManager.AddState(CharacterStateType.idle, new IdleState(), StatesClassification.move);
             fsmManager.AddState(CharacterStateType.walk, new WalkState(), StatesClassification.move);
             fsmManager.AddState(CharacterStateType.walk, new SprintState(), StatesClassification.attack);
@@ -93,7 +96,6 @@ namespace TopDownGunShoot
             if (moveVector != Vector3.zero) // 移动时转向，非移动时保持方向
             {
                 transform.forward = Vector3.Slerp(transform.forward, moveVector, Time.deltaTime * rotateSpeed);
-
             }
         }
 
