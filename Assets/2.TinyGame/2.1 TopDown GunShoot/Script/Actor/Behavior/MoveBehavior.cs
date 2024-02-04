@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using MyUtilities;
-using UnityEditor;
-using UnityEngine.UI;
-using Unity.VisualScripting;
 
 namespace TopDownGunShoot
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(FSMManager))]
-    public class MoveManager : MonoBehaviour, VectorUtility, IUseFSMManager, IUseInputManager
+    public class MoveBehavior : BaseBehavior, VectorUtility, IUseFSMManager
     {
         [SerializeField] private CharacterController controller;
-
 
         [SerializeField, FoldoutGroup("Move Param")] private CharacterControllerConfig config;
         [SerializeField, FoldoutGroup("Move Param")] private bool isUseConfig = true;
@@ -51,11 +47,29 @@ namespace TopDownGunShoot
             HandleFSM();
         }
 
-        void IUseInputManager.InitialInputControl() // 在awke后（awake内会初始化InputManager.Instance以及InputSystem）
+        #region IBehavior
+        public override void Behave()
         {
-            InputManager.Instance.OnMoveAction += MoveAction;
+            // InputManager.Instance.OnMoveAction += MoveAction;
         }
 
+        public override void OnBehaviorAdd()
+        {
+            OnBehaviorAdded();
+        }
+        protected override void OnBehaviorAdded()
+        {
+#if UNITY_EDITOR
+            if (GetComponent<FSMManager>() == null)
+                gameObject.AddComponent<FSMManager>();
+
+            if (GetComponent<CharacterController>() == null)
+                gameObject.AddComponent<CharacterController>();
+#endif
+        }
+        #endregion
+
+        #region IUseFSMManaer
         void IUseFSMManager.InitialFSMManager()
         {
             fsmManager = GetComponent<FSMManager>();
@@ -63,6 +77,7 @@ namespace TopDownGunShoot
             fsmManager.AddState(CharacterStateType.walk, new WalkState(), StatesClassification.move);
             fsmManager.AddState(CharacterStateType.walk, new SprintState(), StatesClassification.attack);
         }
+        #endregion
 
         // 移动的输入控制--需适配多平台
         private void MoveAction(object sender, Vector2 value) // value already normalized
