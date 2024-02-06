@@ -10,11 +10,12 @@ namespace TopDownGunShoot
     [RequireComponent(typeof(FSMManager))]
     public class MoveBehavior : BaseBehavior, VectorUtility
     {
+        public override BehaviorType behaviorType => BehaviorType.move;
+
         [SerializeField] private CharacterController controller;
 
         [SerializeField, FoldoutGroup("Move Param")] private CharacterControllerConfig config;
         [SerializeField, FoldoutGroup("Move Param")] private bool isUseConfig = true;
-        [Space]
         [SerializeField, FoldoutGroup("Move param")] private float moveSpeed;
         [SerializeField, FoldoutGroup("Move param")] private float rotateSpeed;
         [SerializeField, FoldoutGroup("Move param")] private float jumpHeight;

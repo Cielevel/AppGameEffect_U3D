@@ -241,7 +241,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2038596759227201722}
   - component: {fileID: 1657707700996252161}
-  - component: {fileID: 4311841921421182593}
   - component: {fileID: 1657707700996252174}
   m_Layer: 0
   m_Name: character-human
@@ -286,19 +285,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &4311841921421182593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657707700996252160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3686ee1c56694eab5058cfef0169f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationPlayType: 0
 --- !u!114 &1657707700996252174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,8 +316,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1999657122465765340}
-  - component: {fileID: 3827145347569836354}
-  - component: {fileID: 8804098333148002691}
   - component: {fileID: 7842122715878636077}
   - component: {fileID: 3801571326304879319}
   m_Layer: 0
@@ -357,37 +341,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3827145347569836354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999657122465765343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e40ea1022e0ed8f4384da2eb766146a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animeManager: {fileID: 0}
---- !u!114 &8804098333148002691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999657122465765343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0e31d0e8970aa40a071b94981e9def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  config: {fileID: 11400000, guid: 12ec353a0f901054bbab20907b19b70d, type: 2}
-  isUseConfig: 1
-  moveSpeed: 2
-  rotateSpeed: 10
-  jumpHeight: 0
 --- !u!143 &7842122715878636077
 CharacterController:
   m_ObjectHideFlags: 0
@@ -418,6 +371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dbf86c8f0e8924cb1c34b9ac03a957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownedBeaviorTypes: 0200000001000000
+  sharedBehavior: {fileID: 11400000, guid: dba20ce22d30c466dbd714887d760fb6, type: 2}
+  ownBehavior: {fileID: 0}
 --- !u!1 &2540607469302022058
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,8 +748,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.372, y: 0.346, z: 0.36}
-  m_Center: {x: 0, y: 0.176, z: 0.02}
+  m_Size: {x: 0.372, y: 0.33696094, z: 0.36}
+  m_Center: {x: 0, y: 0.1805195, z: 0.019999996}
 --- !u!1 &7876818488863688795
 GameObject:
   m_ObjectHideFlags: 0

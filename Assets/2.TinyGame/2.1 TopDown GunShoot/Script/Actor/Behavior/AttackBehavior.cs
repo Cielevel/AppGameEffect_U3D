@@ -8,6 +8,8 @@ namespace TopDownGunShoot
     [RequireComponent(typeof(FSMManager))]
     public class AttackBehavior : BaseBehavior
     {
+        public override BehaviorType behaviorType => BehaviorType.attack;
+
         public AttackBehavior(Transform transform, FSMManager fsmManager) : base(transform, fsmManager)
         {
 

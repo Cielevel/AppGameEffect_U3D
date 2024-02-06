@@ -1,3 +1,7 @@
+// log:
+// -2024/2/6-
+// * 从MonoBehaviour脚本修改为了普通脚本，作为Actor的内部组件
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +10,7 @@ using Sirenix.OdinInspector;
 
 namespace TopDownGunShoot
 {
-    public class FSMManager : MonoBehaviour // 一个FSM对应一个角色，挂载在角色的父节点，将被多个Manger持有并调用
+    public class FSMManager // 一个FSM对应一个角色，被一个Actor持有
     {
         [SerializeField, FoldoutGroup("Basic Component")] private AnimatorManager animeManager;
 
@@ -17,27 +21,20 @@ namespace TopDownGunShoot
         private CharacterStateType currStateType = CharacterStateType.none;
         private StatesClassification statesClassification = StatesClassification.none; // 需要交付给sub state处理？fsm内部判断？
 
-        private void Awake() // 初始化
+        public FSMManager(AnimatorManager animeManager)
         {
-            InitialInAwake();
+            this.animeManager = animeManager;
+            Initial();
         }
 
-        private void Update()
-        {
-            currentState?.OnUpdate();
-        }
-
-        private void InitialInAwake()
-        {
-            InitialParams();
-        }
-
-        private void InitialParams() // 1
+        private void Initial() // 1
         {
             allStates = new Dictionary<CharacterStateType, BaseState>();
+        }
 
-            if (!animeManager)
-                animeManager = GetComponentInChildren<AnimatorManager>();
+        public void OnUpdate()
+        {
+            currentState?.OnUpdate();
         }
 
         private float GetAnimationDurationByType(CharacterStateType stateType) // 根据名称获取动画播放时长（用于 播放攻击动画屏蔽其他动画）

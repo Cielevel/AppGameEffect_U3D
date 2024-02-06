@@ -7,6 +7,8 @@ namespace TopDownGunShoot
     [SerializeField]
     public abstract class BaseBehavior : IUseFSMManager
     {
+        [SerializeField] public virtual BehaviorType behaviorType => BehaviorType.none;
+
         protected Transform transform;
         protected GameObject gameObject;
         protected FSMManager fsmManager;

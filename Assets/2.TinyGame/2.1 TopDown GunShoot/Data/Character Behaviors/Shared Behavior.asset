@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3796bd40e7f3478895f27eb10aef870, type: 3}
   m_Name: Shared Behavior
   m_EditorClassIdentifier: 
-  sharedBehaviors:
-  - behaviorType: 0
-    behavior:
-      rid: 5912651370414211074
-  - behaviorType: 1
-    behavior:
-      rid: 5912651370414211076
+  behaviors:
+  - behavior:
+      rid: 7379915592597504004
+  - behavior:
+      rid: 7379915592597504005
   references:
     version: 2
     RefIds:
-    - rid: 5912651370414211074
+    - rid: 7379915592597504004
+      type: {class: AttackBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
+    - rid: 7379915592597504005
       type: {class: MoveBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
       data:
         controller: {fileID: 0}
@@ -31,5 +31,3 @@ MonoBehaviour:
         moveSpeed: 0
         rotateSpeed: 0
         jumpHeight: 0
-    - rid: 5912651370414211076
-      type: {class: AttackBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
