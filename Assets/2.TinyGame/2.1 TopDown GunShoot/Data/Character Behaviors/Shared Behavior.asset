@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - behavior:
-      rid: 7379915592597504004
+      rid: 7379915592597504006
   - behavior:
       rid: 7379915592597504005
   references:
     version: 2
     RefIds:
-    - rid: 7379915592597504004
-      type: {class: AttackBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
     - rid: 7379915592597504005
       type: {class: MoveBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
       data:
@@ -31,3 +29,5 @@ MonoBehaviour:
         moveSpeed: 0
         rotateSpeed: 0
         jumpHeight: 0
+    - rid: 7379915592597504006
+      type: {class: AttackBehavior, ns: TopDownGunShoot, asm: Assembly-CSharp}
