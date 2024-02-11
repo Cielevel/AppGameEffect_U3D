@@ -79,7 +79,6 @@ namespace TopDownGunShoot
             // fsmManager = GetComponent<FSMManager>();
             fsmManager.AddState(CharacterStateType.idle, new IdleState(), StatesClassification.move);
             fsmManager.AddState(CharacterStateType.walk, new WalkState(), StatesClassification.move);
-            fsmManager.AddState(CharacterStateType.walk, new SprintState(), StatesClassification.attack);
         }
         #endregion
 
