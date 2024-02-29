@@ -25,6 +25,8 @@ namespace TopDownGunShoot
         /// </summary>
         private Dictionary<CharacterStateType, int> animationHashCodes; // animation的hashcode表，用于减少字符串转hashcode的操作
 
+        private int HashParam_Speed => Animator.StringToHash("Speed");
+
         public AnimatorManager(Animator animator)
         {
             this.animator = animator;
@@ -69,6 +71,11 @@ namespace TopDownGunShoot
         public void PlayAnime_Trigger(CharacterStateType state) // Trigger播放--更流畅的衔接（在Unity Animator中）
         {
             animator.SetTrigger(animationHashCodes[state]);
+        }
+
+        public void SetParamFloatSpeed(float speed = 0)
+        {
+            animator.SetFloat(HashParam_Speed, speed);
         }
     }
 

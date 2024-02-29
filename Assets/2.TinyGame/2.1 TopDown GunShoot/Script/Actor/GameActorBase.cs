@@ -53,7 +53,7 @@ namespace TopDownGunShoot
 
         protected virtual void Update()
         {
-            fsmManager.OnUpdate();
+            // fsmManager.OnUpdate();
         }
 
         protected virtual void InitialOnAwake() // 有严格顺序
