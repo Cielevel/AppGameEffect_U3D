@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MyInputSystem;
 
 namespace TopDownGunShoot
 {
@@ -10,7 +11,7 @@ namespace TopDownGunShoot
     {
         public static InputManager Instance { get; private set; }
 
-        private InputSystem inputs;
+        private CharacterInputSystem inputs;
 
         public event EventHandler OnInteractAction; // 交互
         public event EventHandler OnAttackAction; // 攻击
@@ -34,7 +35,7 @@ namespace TopDownGunShoot
 
         private void InitializeInputSystem()
         {
-            inputs = new InputSystem();
+            inputs = new CharacterInputSystem();
 
             inputs.MainCharater.Interact.performed += Interact;
             inputs.MainCharater.Attack.performed += Attack;

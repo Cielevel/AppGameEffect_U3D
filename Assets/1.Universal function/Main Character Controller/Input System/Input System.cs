@@ -15,12 +15,12 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace TopDownGunShoot
+namespace MyInputSystem
 {
-    public partial class @InputSystem : IInputActionCollection2, IDisposable
+    public partial class CharacterInputSystem : IInputActionCollection2, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @InputSystem()
+        public CharacterInputSystem()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""Input System"",
@@ -363,8 +363,8 @@ namespace TopDownGunShoot
         private readonly InputAction m_MainCharater_SwitchWeapon;
         public struct MainCharaterActions
         {
-            private @InputSystem m_Wrapper;
-            public MainCharaterActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+            private CharacterInputSystem m_Wrapper;
+            public MainCharaterActions(CharacterInputSystem wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_MainCharater_Move;
             public InputAction @Interact => m_Wrapper.m_MainCharater_Interact;
             public InputAction @Attack => m_Wrapper.m_MainCharater_Attack;
